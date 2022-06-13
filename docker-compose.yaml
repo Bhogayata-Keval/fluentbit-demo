@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  fluentbit:
+    image: cr.fluentbit.io/fluent/fluent-bit
+    ports:
+      - "24224:24224"
+    volumes:
+      - "./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf"
+    
+  my_collector:
+    volumes:
+      - ./otel-col-config.yaml:/otel-local-config.yaml
+    ports:
+      - 55681:55681
+    image: otel/opentelemetry-collector:0.47.0
