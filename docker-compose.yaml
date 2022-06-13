@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3"
 
 services:
   fluentbit:
@@ -14,3 +14,5 @@ services:
     ports:
       - 55681:55681
     image: otel/opentelemetry-collector:0.47.0
+    environment:
+      config: otel-local-config.yaml
